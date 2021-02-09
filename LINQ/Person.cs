@@ -17,7 +17,7 @@ namespace LINQ
         }
         public override string ToString()
         {
-            return $"{Name} {NameDay}";
+            return $"{Name}, {NameDay}";
         }
 
         public bool Equals([AllowNull] Person x, [AllowNull] Person y)
@@ -25,9 +25,9 @@ namespace LINQ
             return x.Name == y.Name;
         }
 
-        public int GetHashCode([DisallowNull] Person obj)
+        public int GetHashCode([DisallowNull] Person x)
         {
-            return obj.Name.GetHashCode();
+            return x.Name.GetHashCode();
         }
     }
 }
