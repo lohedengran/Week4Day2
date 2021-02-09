@@ -53,17 +53,27 @@ namespace Week4Day2
             //    .SingleOrDefault(p => p.LastName == "Johansson");
             //Console.WriteLine(q);
 
-            var groups = people
-                .GroupBy(p => p.FirstName);
+            //var groups = people
+            //    .GroupBy(p => p.BirthYear);
 
-            foreach (var group in groups)
+            //foreach (var group in groups)
+            //{
+            //    if (group.Count() > 1)
+            //    {
+            //        Console.WriteLine($"Det finns {group.Count()} personer som är födda {group.Key}");
+            //    }
+
+            //}
+            Person intanceOfPeersonToCompareWith = new Person("Ellen", "Key", 1849);
+
+            var exists = people
+                .Contains(intanceOfPeersonToCompareWith, intanceOfPeersonToCompareWith);
+
+            if (exists)
             {
-                Console.WriteLine(group.Count());
-                foreach (var person in group)
-                {
-                    Console.WriteLine($"\t{person.FirstName}");
-                }
-            }
+                Console.WriteLine("Ellen Key finns i people");
+            } else
+                Console.WriteLine("Ellen Key finns inte i people");
          
         }
     }

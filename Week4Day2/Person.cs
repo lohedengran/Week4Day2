@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Week4Day2
 {
-    class Person
+    class Person : IEqualityComparer<Person>
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -20,6 +21,14 @@ namespace Week4Day2
         public override string ToString()
         {
             return $"{FirstName} {LastName} {BirthYear} {Age}";
+        }
+        public bool Equals([AllowNull] Person x, [AllowNull] Person y)
+        {
+            return x.Age == y.Age && x.FirstName == y.FirstName && x.LastName == y.LastName;
+        }
+        public int GetHashCode([DisallowNull] Person obj)
+        {
+            return obj.Age.GetHashCode() + obj.FirstName.GetHashCode() + obj.LastName.GetHashCode();
         }
     }
 }
