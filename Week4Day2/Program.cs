@@ -49,9 +49,21 @@ namespace Week4Day2
             //    Console.WriteLine(item.AnyName);
             //}
 
-            var q = people
-                .SingleOrDefault(p => p.LastName == "Johansson");
-            Console.WriteLine(q);
+            //var q = people
+            //    .SingleOrDefault(p => p.LastName == "Johansson");
+            //Console.WriteLine(q);
+
+            var groups = people
+                .GroupBy(p => p.FirstName);
+
+            foreach (var group in groups)
+            {
+                Console.WriteLine(group.Count());
+                foreach (var person in group)
+                {
+                    Console.WriteLine($"\t{person.FirstName}");
+                }
+            }
          
         }
     }
